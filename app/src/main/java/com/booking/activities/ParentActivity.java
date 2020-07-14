@@ -1,0 +1,27 @@
+package com.booking.activities;
+
+import android.os.Bundle;
+import android.view.Window;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.booking.R;
+import com.booking.fragments.ParentFragment;
+
+public class ParentActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
+    }
+
+    protected void replaceFragment(ParentFragment pf) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment, pf);
+        ft.commit();
+    }
+}

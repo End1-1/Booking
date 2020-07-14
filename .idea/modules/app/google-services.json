@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "374469321442",
+    "firebase_url": "https://hotelsbooking-20441.firebaseio.com",
+    "project_id": "hotelsbooking-20441",
+    "storage_bucket": "hotelsbooking-20441.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374469321442:android:d04cb0684a6946155b34bb",
+        "android_client_info": {
+          "package_name": "com.booking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374469321442-olq2s2a94ra3duia7sc5jh541qu7ce35.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.booking",
+            "certificate_hash": "e4ab22864a05dde1d6e430624cd5478d872b8135"
+          }
+        },
+        {
+          "client_id": "374469321442-3sfuij3n060neevb9ek26lk0jchhdbdr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-KJ0hokx1WhODnHdye0_PAgcShKOBjLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374469321442-3sfuij3n060neevb9ek26lk0jchhdbdr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

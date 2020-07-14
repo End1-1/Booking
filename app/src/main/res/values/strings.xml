@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Booking</string>
+    <string name="default_notification_channel_id" translatable="false">default_notification_channel_id</string>
+    <string name="default_notification_channel_name" translatable="true">Booking</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Էլ․ փոստ կամ հեռախոս</string>
+    <string name="prompt_password">Գախտնաառ</string>
+    <string name="action_sign_in">Մուտք</string>
+    <string name="retry_autologin">Կրկին փորձել</string>
+    <string name="standart_login">Նորմալ մուտք</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
