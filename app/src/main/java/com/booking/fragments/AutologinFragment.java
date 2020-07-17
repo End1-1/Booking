@@ -70,7 +70,7 @@ public class AutologinFragment extends ParentFragment {
             mBind.err.setVisibility(View.VISIBLE);
             return;
         }
-        GAnswer ga = GAnswer.parse(s);
+        GAnswer ga = GAnswer.parse(s, GAnswer.class);
         if (ga == null) {
             mBind.retry.setVisibility(View.VISIBLE);
             mBind.login.setVisibility(View.VISIBLE);

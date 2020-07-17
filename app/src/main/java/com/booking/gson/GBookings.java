@@ -14,8 +14,4 @@ public class GBookings extends GObject {
     public String timefor;
     public String restype;
     public String client;
-
-    public static GBookings parse(JsonObject o) {
-        return gson().fromJson(o, GBookings.class);
-    }
 }

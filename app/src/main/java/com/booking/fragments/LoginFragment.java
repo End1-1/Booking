@@ -55,7 +55,7 @@ public class LoginFragment extends ParentFragment {
             mBind.message.setText(s);
             return;
         }
-        GAnswer ga = GAnswer.parse(s);
+        GAnswer ga = GAnswer.parse(s, GAnswer.class);
         if (ga == null) {
             return;
         }
@@ -69,7 +69,7 @@ public class LoginFragment extends ParentFragment {
         }
         switch (code) {
             case HttpQueries.rcAuth:
-                GUser gu = GUser.parse(ga.data);
+                GUser gu = GUser.parse(ga.data, GUser.class);
                 Cnf.setInt("user_id", gu.id);
                 Cnf.setString("firstname", gu.firstname);
                 Cnf.setString("lastname", gu.lastname);

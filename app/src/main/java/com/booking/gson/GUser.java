@@ -9,8 +9,4 @@ public class GUser extends GObject {
     public String lastname;
     public String phone;
     public String email;
-
-    public static GUser parse(JsonObject o) {
-        return gson().fromJson(o, GUser.class);
-    }
 }

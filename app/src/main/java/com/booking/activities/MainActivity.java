@@ -32,8 +32,11 @@ public class MainActivity extends ParentActivity {
         super.onCreate(savedInstanceState);
         mBind = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mBind.getRoot());
+        mBind.buttons.setVisibility(View.GONE);
         mBind.bookings.setOnClickListener(this);
         mBind.rooms.setOnClickListener(this);
+        mBind.arrives.setOnClickListener(this);
+        mBind.departures.setOnClickListener(this);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String channelId  = getString(R.string.default_notification_channel_id);
@@ -75,6 +78,20 @@ public class MainActivity extends ParentActivity {
                 break;
             case R.id.rooms:
                 replaceFragment(ParentFragment.newInstance(RoomsFragment.class));
+                break;
+            case R.id.arrives:
+                Bundle ba = new Bundle();
+                ba.putBoolean("arrives", true);
+                BookingsFragment bfa = ParentFragment.newInstance(BookingsFragment.class);
+                bfa.setArguments(ba);
+                replaceFragment(bfa);
+                break;
+            case R.id.departures:
+                Bundle bd = new Bundle();
+                bd.putBoolean("departures", true);
+                BookingsFragment bfd = ParentFragment.newInstance(BookingsFragment.class);
+                bfd.setArguments(bd);
+                replaceFragment(bfd);
                 break;
         }
     }

@@ -1,5 +1,6 @@
 package com.booking.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.booking.R;
+import com.booking.activities.RoomEditActivity;
 import com.booking.databinding.FragmentRoomsBinding;
 import com.booking.gson.GAnswer;
 import com.booking.gson.GRoom;
@@ -48,7 +50,7 @@ public class RoomsFragment extends ParentFragment {
         if (webResponse > 299) {
             return;
         }
-        GAnswer ga = GAnswer.parse(s);
+        GAnswer ga = GAnswer.parse(s, GAnswer.class);
         if (ga == null) {
             return;
         }
@@ -58,7 +60,7 @@ public class RoomsFragment extends ParentFragment {
         mRooms.clear();
         JsonArray ja = ga.data.getAsJsonArray("rooms");
         for (int i = 0; i < ja.size(); i++) {
-            GRoom r = GRoom.parse(ja.get(i).getAsJsonObject());
+            GRoom r = GRoom.parse(ja.get(i).getAsJsonObject(), GRoom.class);
             mRooms.add(r);
         }
         mAdapter.notifyDataSetChanged();
@@ -66,13 +68,14 @@ public class RoomsFragment extends ParentFragment {
 
     private class RoomsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-        private class VH extends RecyclerView.ViewHolder {
+        private class VH extends RecyclerView.ViewHolder implements View.OnClickListener {
             private TextView tvName;
             private TextView tvPax;
             private TextView tvPrice;
 
             public VH(@NonNull View itemView) {
                 super(itemView);
+                itemView.setOnClickListener(this);
                 tvName = itemView.findViewById(R.id.name);
                 tvPax = itemView.findViewById(R.id.pax);
                 tvPrice = itemView.findViewById(R.id.price);
@@ -83,6 +86,18 @@ public class RoomsFragment extends ParentFragment {
                 tvName.setText(r.name);
                 tvPax.setText(String.format("%s: %s", getString(R.string.pax), r.pax));
                 tvPrice.setText(String.format("%s: %s", getString(R.string.price), r.price));
+            }
+
+            @Override
+            public void onClick(View view) {
+                int i = getLayoutPosition();
+                GRoom r = mRooms.get(i);
+                Intent intent = new Intent(getContext(), RoomEditActivity.class);
+                intent.putExtra("room", r.id);
+                intent.putExtra("name", r.name);
+                intent.putExtra("pax", r.pax);
+                intent.putExtra("price", r.price);
+                startActivity(intent);
             }
         }
 

@@ -10,8 +10,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.booking.R;
 import com.booking.fragments.ParentFragment;
+import com.booking.interfaces.HttpResponse;
 
-public class ParentActivity extends AppCompatActivity implements View.OnClickListener {
+public class ParentActivity extends AppCompatActivity implements
+        View.OnClickListener,
+        HttpResponse {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,6 +31,11 @@ public class ParentActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
+
+    }
+
+    @Override
+    public void webResponse(int code, int webResponse, String s) {
 
     }
 }

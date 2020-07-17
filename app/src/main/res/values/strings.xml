@@ -11,6 +11,17 @@
     <string name="pax">Տեղ</string>
     <string name="price">Գին</string>
     <string name="nights">Գիշեր</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="total">Ընդամենը</string>
+    <string name="guest">Հյուր</string>
+    <string name="adults">Մեծահասակ</string>
+    <string name="childs">Երեխա</string>
+    <string name="email">Էլ․ փոսթ</string>
+    <string name="phone">Հեռախոս</string>
+    <string name="arrival">Մուտք</string>
+    <string name="departure">Ելք</string>
+    <string name="room">Սենյակ</string>
+    <string name="message">Հահորդագրություն</string>
+    <string name="bed">Տեղեր</string>
+    <string name="save">Պահպանել</string>
+
 </resources>

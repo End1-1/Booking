@@ -7,8 +7,4 @@ public class GRoom extends GObject {
     public String pax;
     public String price;
     public String name;
-
-    public static GRoom parse(JsonObject o) {
-         return gson().fromJson(o, GRoom.class);
-    }
 }

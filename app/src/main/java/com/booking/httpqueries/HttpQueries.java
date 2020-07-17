@@ -9,6 +9,8 @@ public class HttpQueries {
     public static final int rcAutologin = 2;
     public static final int rcBookings = 3;
     public static final int rcRooms = 4;
+    public static final int rcBookingVoucher = 5;
+    public static final int rcSaveRoom = 6;
 
     protected HttpQuery mQuery;
 
