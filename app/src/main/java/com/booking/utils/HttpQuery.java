@@ -115,7 +115,6 @@ public class HttpQuery extends AsyncTask<Void, Void, Integer> {
             if (urlParameters.length() > 0) {
                 mUrl += "?" + urlParameters;
             }
-            Log.d("UWEB POST", mUrl );
             URL url = new URL(mUrl);
             HttpURLConnection con = null;
             HttpsURLConnection cons = null;
@@ -181,7 +180,7 @@ public class HttpQuery extends AsyncTask<Void, Void, Integer> {
             }
             urlParameters += e.getKey() + "=" + e.getValue();
         }
-        Log.d("UWEB POST", mUrl + " --- " + urlParameters);
+        Log.d("HTTP POST", mUrl + " --- " + urlParameters);
         try {
             URL url = new URL(mUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();

@@ -16,7 +16,7 @@ import com.booking.httpqueries.HttpQueries;
 import com.booking.interfaces.HttpResponse;
 import com.booking.utils.Cnf;
 
-public class LoginFragment extends ParentFragment implements HttpResponse {
+public class LoginFragment extends ParentFragment {
 
     private FragmentLoginBinding mBind;
 
@@ -50,6 +50,11 @@ public class LoginFragment extends ParentFragment implements HttpResponse {
     public void webResponse(int code, int webResponse, String s) {
         mBind.loading.setVisibility(View.GONE);
         mBind.login.setEnabled(true);
+        if (webResponse > 299) {
+            mBind.message.setVisibility(View.VISIBLE);
+            mBind.message.setText(s);
+            return;
+        }
         GAnswer ga = GAnswer.parse(s);
         if (ga == null) {
             return;

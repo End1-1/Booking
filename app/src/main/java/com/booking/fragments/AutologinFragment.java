@@ -14,8 +14,9 @@ import com.booking.databinding.FragmentAutologinBinding;
 import com.booking.gson.GAnswer;
 import com.booking.httpqueries.HttpAutologin;
 import com.booking.interfaces.HttpResponse;
+import com.booking.utils.Cnf;
 
-public class AutologinFragment extends ParentFragment implements HttpResponse {
+public class AutologinFragment extends ParentFragment {
 
     private FragmentAutologinBinding mBind;
 
@@ -46,8 +47,13 @@ public class AutologinFragment extends ParentFragment implements HttpResponse {
             case R.id.retry:
                 mBind.retry.setVisibility(View.GONE);
                 mBind.login.setVisibility(View.GONE);
+                mBind.err.setVisibility(View.GONE);
+                mBind.progressBar.setVisibility(View.VISIBLE);
+                HttpAutologin httpAutologin = new HttpAutologin(this);
+                httpAutologin.go();
                 break;
             case R.id.login:
+                Cnf.setInt("user_id", 0);
                 ((MainActivity) getActivity()).standartLogin();
                 break;
         }
@@ -55,9 +61,13 @@ public class AutologinFragment extends ParentFragment implements HttpResponse {
 
     @Override
     public void webResponse(int code, int webResponse, String s) {
+        mBind.progressBar.setVisibility(View.GONE);
         if (webResponse > 299) {
+            mBind.progressBar.setVisibility(View.GONE);
             mBind.retry.setVisibility(View.VISIBLE);
             mBind.login.setVisibility(View.VISIBLE);
+            mBind.err.setText(s);
+            mBind.err.setVisibility(View.VISIBLE);
             return;
         }
         GAnswer ga = GAnswer.parse(s);

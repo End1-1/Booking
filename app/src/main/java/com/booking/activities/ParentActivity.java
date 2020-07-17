@@ -1,6 +1,7 @@
 package com.booking.activities;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 
 import androidx.annotation.Nullable;
@@ -10,7 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.booking.R;
 import com.booking.fragments.ParentFragment;
 
-public class ParentActivity extends AppCompatActivity {
+public class ParentActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,5 +24,10 @@ public class ParentActivity extends AppCompatActivity {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment, pf);
         ft.commit();
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

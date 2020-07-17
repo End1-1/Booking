@@ -9,6 +9,7 @@ import com.booking.R;
 public class Cnf {
     private static final String KEY_TOKEN = "token";
     public static final String mHttpHost = "https://10.1.0.2";
+    //public static final String mHttpHost = "http://booking.newstarsoft.org";
 
     public static SharedPreferences getPreferences() {
         return App.context().getSharedPreferences(App.context().getString(R.string.app_name), Context.MODE_PRIVATE);
