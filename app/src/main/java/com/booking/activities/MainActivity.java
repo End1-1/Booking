@@ -16,6 +16,7 @@ import com.booking.fragments.BlankFragment;
 import com.booking.fragments.BookingsFragment;
 import com.booking.fragments.LoginFragment;
 import com.booking.fragments.ParentFragment;
+import com.booking.fragments.RestaurantFragment;
 import com.booking.fragments.RoomsFragment;
 import com.booking.utils.Cnf;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,6 +38,8 @@ public class MainActivity extends ParentActivity {
         mBind.rooms.setOnClickListener(this);
         mBind.arrives.setOnClickListener(this);
         mBind.departures.setOnClickListener(this);
+        mBind.kitchen.setOnClickListener(this);
+        mBind.checkin.setOnClickListener(this);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String channelId  = getString(R.string.default_notification_channel_id);
@@ -86,12 +89,22 @@ public class MainActivity extends ParentActivity {
                 bfa.setArguments(ba);
                 replaceFragment(bfa);
                 break;
+            case R.id.checkin:
+                Bundle bc = new Bundle();
+                bc.putBoolean("checkin", true);
+                BookingsFragment bfc = ParentFragment.newInstance(BookingsFragment.class);
+                bfc.setArguments(bc);
+                replaceFragment(bfc);
+                break;
             case R.id.departures:
                 Bundle bd = new Bundle();
                 bd.putBoolean("departures", true);
                 BookingsFragment bfd = ParentFragment.newInstance(BookingsFragment.class);
                 bfd.setArguments(bd);
                 replaceFragment(bfd);
+                break;
+            case R.id.kitchen:
+                replaceFragment(ParentFragment.newInstance(RestaurantFragment.class));
                 break;
         }
     }

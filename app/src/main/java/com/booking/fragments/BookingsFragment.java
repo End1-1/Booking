@@ -25,6 +25,7 @@ public class BookingsFragment extends ParentFragment {
 
     private boolean mFlagArrives = false;
     private boolean mFlagDepartures = false;
+    private boolean mFlagCheckin = false;
     private FragmentBookingsBinding mBind;
     private ArrayList<GBookings> mBookings = new ArrayList<GBookings>();
     private BookingsAdapter mAdapter = new BookingsAdapter();
@@ -44,6 +45,7 @@ public class BookingsFragment extends ParentFragment {
         if (b != null) {
             mFlagArrives = b.getBoolean("arrives", false);
             mFlagDepartures = b.getBoolean("departures", false);
+            mFlagCheckin = b.getBoolean("checkin", false);
         }
         load();
     }
@@ -69,7 +71,7 @@ public class BookingsFragment extends ParentFragment {
 
     void load() {
         mBind.lprogress.setVisibility(View.VISIBLE);
-        HttpBookings httpBookings = new HttpBookings(mFlagArrives, mFlagDepartures, this);
+        HttpBookings httpBookings = new HttpBookings(mFlagArrives, mFlagDepartures, mFlagCheckin, this);
         httpBookings.go();
     }
 

@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.booking.R;
 import com.booking.databinding.ActivityRoomEditBinding;
+import com.booking.httpqueries.HttpQueryAddReserve;
 import com.booking.httpqueries.HttpSaveRoom;
 
 public class RoomEditActivity extends ParentActivity {
@@ -24,6 +25,7 @@ public class RoomEditActivity extends ParentActivity {
         mBind.place.setText(i.getStringExtra("pax"));
         mBind.price.setText(i.getStringExtra("price"));
         mBind.save.setOnClickListener(this);
+        mBind.addreserve.setOnClickListener(this);
     }
 
     @Override
@@ -33,6 +35,11 @@ public class RoomEditActivity extends ParentActivity {
                 mBind.progress.setVisibility(View.VISIBLE);
                 HttpSaveRoom saveRoom = new HttpSaveRoom(mId, mBind.name.getText().toString(), mBind.place.getText().toString(), mBind.price.getText().toString(), this);
                 saveRoom.go();
+                break;
+            case R.id.addreserve:
+                mBind.progress.setVisibility(View.VISIBLE);
+                HttpQueryAddReserve addReserve = new HttpQueryAddReserve(mId, mBind.message.getText().toString(), mBind.dateStart.getText().toString(), mBind.dateEnd.getText().toString(), this);
+                addReserve.go();
                 break;
         }
     }

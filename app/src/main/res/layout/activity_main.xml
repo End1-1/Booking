@@ -29,6 +29,15 @@
                 app:srcCompat="@drawable/arrives" />
 
             <ImageButton
+                android:id="@+id/checkin"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="5px"
+                android:background="@null"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/checkout" />
+
+            <ImageButton
                 android:id="@+id/departures"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
@@ -54,6 +63,15 @@
                 android:background="@null"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/rooms" />
+
+            <ImageButton
+            android:id="@+id/kitchen"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="5px"
+            android:background="@null"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/kitchen" />
         </LinearLayout>
 
         <View

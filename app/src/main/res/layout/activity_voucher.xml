@@ -280,7 +280,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/empty_rect">
 
             <TextView
                 android:layout_width="match_parent"
@@ -299,6 +300,24 @@
                 android:text="Hello! Im Bond, James Bond. I like Martini. One bottle please."
                 android:textSize="16sp"/>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/checkin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Checkin" />
+
+        <Button
+            android:id="@+id/checkout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Checkout" />
+
+        <Button
+            android:id="@+id/cancelReserve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/CancelReservation" />
 
     </LinearLayout>
 
