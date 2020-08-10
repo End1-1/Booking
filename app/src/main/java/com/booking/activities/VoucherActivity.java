@@ -1,5 +1,6 @@
 package com.booking.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,10 +12,14 @@ import com.booking.gson.GBookingVoucher;
 import com.booking.httpqueries.HttpBookingVoucher;
 import com.booking.httpqueries.HttpQueries;
 import com.booking.httpqueries.HttpReservationState;
+import com.booking.utils.Dialog;
+
+import static android.content.DialogInterface.BUTTON_POSITIVE;
 
 public class VoucherActivity extends ParentActivity {
 
-    String mId;
+    private String mId;
+    private int mState = 0;
     private ActivityVoucherBinding mBind;
 
     @Override
@@ -41,16 +46,13 @@ public class VoucherActivity extends ParentActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.checkin:
-                HttpReservationState rcheckin = new HttpReservationState(mId, "3", this);
-                rcheckin.go();
+                updateState("3");
                 break;
             case R.id.checkout:
-                HttpReservationState rcheckout = new HttpReservationState(mId, "4", this);
-                rcheckout.go();
+                updateState("4");
                 break;
             case R.id.cancelReserve:
-                HttpReservationState rcancel = new HttpReservationState(mId, "5", this);
-                rcancel.go();
+                updateState("5");
                 break;
         }
     }
@@ -80,10 +82,43 @@ public class VoucherActivity extends ParentActivity {
                 mBind.nights.setText(bv.nights);
                 mBind.total.setText(bv.total);
                 mBind.message.setText(bv.message);
+                mState = Integer.valueOf(bv.state);
+                setButtons();
                 break;
             case HttpQueries.rcReserveState:
                 finish();
                 break;
+        }
+    }
+
+    void updateState(final String state) {
+        Dialog.alertDialog(this, R.string.SaveChanges, getString(R.string.SaveChanges), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                dialog.dismiss();
+                switch (i) {
+                    case BUTTON_POSITIVE:
+                        HttpReservationState rcheckin = new HttpReservationState(mId, state, VoucherActivity.this);
+                        rcheckin.go();
+                        break;
+                }
+            }
+        });
+    }
+
+    void setButtons() {switch (mState) {
+        case 2:
+            mBind.checkout.setVisibility(View.GONE);
+            break;
+        case 3:
+            mBind.checkin.setVisibility(View.GONE);
+            mBind.cancelReserve.setVisibility(View.GONE);
+            break;
+        default:
+            mBind.checkin.setVisibility(View.GONE);
+            mBind.checkout.setVisibility(View.GONE);
+            mBind.cancelReserve.setVisibility(View.GONE);
+            break;
         }
     }
 }

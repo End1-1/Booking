@@ -9,7 +9,7 @@
     tools:context=".activities.RoomEditActivity">
 
 
-    <TextView
+    <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,6 +18,25 @@
         android:textSize="20sp"
         android:textColor="@color/colorSeparator"
         android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/Category" />
+
+        <Spinner
+            android:id="@+id/category"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -72,60 +91,16 @@
         android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10px"
+        android:background="@drawable/btn_shape"
+        android:textColor="@color/colorWhite"
         android:text="@string/save" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/Start" />
-
-        <EditText
-            android:id="@+id/dateStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/End" />
-
-        <EditText
-            android:id="@+id/dateEnd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10" />
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/message"
-        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/addreserve"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/btn_shape"
+        android:textColor="@color/colorWhite"
         android:text="@string/AddReserve" />
 </LinearLayout>

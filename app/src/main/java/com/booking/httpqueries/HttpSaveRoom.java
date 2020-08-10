@@ -5,9 +5,11 @@ import com.booking.utils.Cnf;
 import com.booking.utils.HttpQuery;
 
 public class HttpSaveRoom extends HttpQueries {
-    public HttpSaveRoom(String room, String name, String pax, String price, HttpResponse r) {
+    public HttpSaveRoom(String room, String category, String name, String pax, String price, HttpResponse r) {
         super(Cnf.mHttpHost + "/app/saveroom.php", HttpQuery.mMethodPost, HttpQueries.rcSaveRoom);
         mQuery.mWebResponse = r;
+        mQuery.setParameter("object", Cnf.getString("object"));
+        mQuery.setParameter("category", category);
         mQuery.setParameter("room", room);
         mQuery.setParameter("name", name);
         mQuery.setParameter("pax", pax);

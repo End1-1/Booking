@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.booking.R;
+import com.booking.adapters.CategoryAdapter;
 import com.booking.databinding.ActivityRoomEditBinding;
-import com.booking.httpqueries.HttpQueryAddReserve;
+import com.booking.gson.GRoomCategory;
 import com.booking.httpqueries.HttpSaveRoom;
+import com.google.gson.JsonParser;
 
 public class RoomEditActivity extends ParentActivity {
 
@@ -26,6 +28,7 @@ public class RoomEditActivity extends ParentActivity {
         mBind.price.setText(i.getStringExtra("price"));
         mBind.save.setOnClickListener(this);
         mBind.addreserve.setOnClickListener(this);
+        mBind.category.setAdapter(new CategoryAdapter(this));
     }
 
     @Override
@@ -33,13 +36,15 @@ public class RoomEditActivity extends ParentActivity {
         switch (view.getId()) {
             case R.id.save:
                 mBind.progress.setVisibility(View.VISIBLE);
-                HttpSaveRoom saveRoom = new HttpSaveRoom(mId, mBind.name.getText().toString(), mBind.place.getText().toString(), mBind.price.getText().toString(), this);
+                GRoomCategory rc = (GRoomCategory) mBind.category.getSelectedItem();
+                HttpSaveRoom saveRoom = new HttpSaveRoom(mId, rc.id, mBind.name.getText().toString(), mBind.place.getText().toString(), mBind.price.getText().toString(), this);
                 saveRoom.go();
                 break;
             case R.id.addreserve:
-                mBind.progress.setVisibility(View.VISIBLE);
-                HttpQueryAddReserve addReserve = new HttpQueryAddReserve(mId, mBind.message.getText().toString(), mBind.dateStart.getText().toString(), mBind.dateEnd.getText().toString(), this);
-                addReserve.go();
+                Intent ri = new Intent(this, ReserveActivity.class);
+                ri.putExtra("id", mId);
+                ri.putExtra("name", mBind.name.getText().toString());
+                startActivity(ri);
                 break;
         }
     }
@@ -47,5 +52,10 @@ public class RoomEditActivity extends ParentActivity {
     @Override
     public void webResponse(int code, int webResponse, String s) {
         mBind.progress.setVisibility(View.GONE);
+        JsonParser jp = new JsonParser();
+        if (webResponse > 299) {
+            return;
+        }
+        finish();
     }
 }

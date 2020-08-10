@@ -1,9 +1,8 @@
 package com.booking.gson;
 
-import com.google.gson.JsonObject;
-
 public class GBookings extends GObject {
     public String id;
+    public String state;
     public String room;
     public String datefrom;
     public String dateto;

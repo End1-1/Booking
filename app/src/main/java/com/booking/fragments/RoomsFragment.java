@@ -14,10 +14,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.booking.R;
+import com.booking.activities.App;
 import com.booking.activities.RoomEditActivity;
+import com.booking.activities.RoomOptionsActivity;
+import com.booking.adapters.RoomsAdapter;
 import com.booking.databinding.FragmentRoomsBinding;
 import com.booking.gson.GAnswer;
 import com.booking.gson.GRoom;
+import com.booking.gson.GRoomCategory;
+import com.booking.httpqueries.HttpQueries;
+import com.booking.httpqueries.HttpRoomCategory;
 import com.booking.httpqueries.HttpRooms;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -27,14 +33,16 @@ import java.util.ArrayList;
 public class RoomsFragment extends ParentFragment {
 
     private FragmentRoomsBinding mBind;
-    private ArrayList<GRoom> mRooms = new ArrayList<>();
-    private RoomsAdapter mAdapter = new RoomsAdapter();
+    private RoomsAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mAdapter = new RoomsAdapter(getActivity());
         mBind = FragmentRoomsBinding.inflate(inflater, container, false);
         mBind.rvData.setLayoutManager(new LinearLayoutManager(mBind.getRoot().getContext()));
         mBind.rvData.setAdapter(mAdapter);
+        mBind.roomoptions.setOnClickListener(this);
+        mBind.newroom.setOnClickListener(this);
         return mBind.getRoot();
     }
 
@@ -43,6 +51,10 @@ public class RoomsFragment extends ParentFragment {
         super.onStart();
         HttpRooms httpRooms = new HttpRooms(this);
         httpRooms.go();
+        if (GRoomCategory.mList.isEmpty()) {
+            HttpRoomCategory roomCategory = new HttpRoomCategory(this);
+            roomCategory.go();
+        }
     }
 
     @Override
@@ -57,65 +69,38 @@ public class RoomsFragment extends ParentFragment {
         if (ga.ok == 0) {
             return;
         }
-        mRooms.clear();
-        JsonArray ja = ga.data.getAsJsonArray("rooms");
-        for (int i = 0; i < ja.size(); i++) {
-            GRoom r = GRoom.parse(ja.get(i).getAsJsonObject(), GRoom.class);
-            mRooms.add(r);
+        switch (code) {
+            case HttpQueries.rcRooms:
+                GRoom.mList.clear();
+                JsonArray ja = ga.data.getAsJsonArray("rooms");
+                for (int i = 0; i < ja.size(); i++) {
+                    GRoom r = GRoom.parse(ja.get(i).getAsJsonObject(), GRoom.class);
+                    GRoom.mList.add(r);
+                }
+                mAdapter.notifyDataSetChanged();
+                break;
+            case HttpQueries.rcRoomCategoryList:
+                JsonArray jacat = ga.data.getAsJsonArray("categories");
+                GRoomCategory.from(jacat, GRoomCategory.class, GRoomCategory.mList);
+                break;
         }
-        mAdapter.notifyDataSetChanged();
     }
 
-    private class RoomsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
-        private class VH extends RecyclerView.ViewHolder implements View.OnClickListener {
-            private TextView tvName;
-            private TextView tvPax;
-            private TextView tvPrice;
-
-            public VH(@NonNull View itemView) {
-                super(itemView);
-                itemView.setOnClickListener(this);
-                tvName = itemView.findViewById(R.id.name);
-                tvPax = itemView.findViewById(R.id.pax);
-                tvPrice = itemView.findViewById(R.id.price);
-            }
-
-            public void bind(int i) {
-                GRoom r = mRooms.get(i);
-                tvName.setText(r.name);
-                tvPax.setText(String.format("%s: %s", getString(R.string.pax), r.pax));
-                tvPrice.setText(String.format("%s: %s", getString(R.string.price), r.price));
-            }
-
-            @Override
-            public void onClick(View view) {
-                int i = getLayoutPosition();
-                GRoom r = mRooms.get(i);
-                Intent intent = new Intent(getContext(), RoomEditActivity.class);
-                intent.putExtra("room", r.id);
-                intent.putExtra("name", r.name);
-                intent.putExtra("pax", r.pax);
-                intent.putExtra("price", r.price);
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.roomoptions:
+                Intent rointent = new Intent(getContext(), RoomOptionsActivity.class);
+                startActivity(rointent);
+                break;
+            case R.id.newroom:
+                Intent intent = new Intent(App.context(), RoomEditActivity.class);
+                intent.putExtra("room", "0");
+                intent.putExtra("name", getString(R.string.NewRoom));
+                intent.putExtra("pax", "1");
+                intent.putExtra("price", "0");
                 startActivity(intent);
-            }
-        }
-
-        @NonNull
-        @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new VH(getLayoutInflater().inflate(R.layout.item_rooms, parent, false));
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-            VH h = (VH) holder;
-            h.bind(position);
-        }
-
-        @Override
-        public int getItemCount() {
-            return mRooms.size();
+                break;
         }
     }
 }

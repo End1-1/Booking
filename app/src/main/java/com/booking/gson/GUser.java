@@ -9,4 +9,6 @@ public class GUser extends GObject {
     public String lastname;
     public String phone;
     public String email;
+    public String object;
+    public String name;
 }

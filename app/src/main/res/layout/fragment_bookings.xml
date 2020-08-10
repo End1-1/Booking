@@ -6,6 +6,16 @@
     android:orientation="vertical"
     tools:context=".fragments.BookingsFragment">
 
+    <TextView
+        android:id="@+id/whereami"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="TextView" />
+
     <LinearLayout
         android:id="@+id/lprogress"
         android:layout_width="match_parent"

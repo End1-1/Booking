@@ -70,6 +70,17 @@ public class BookingsFragment extends ParentFragment {
     }
 
     void load() {
+        int title = R.string.All;
+        if (mFlagDepartures) {
+            title = R.string.Departures;
+        }
+        if (mFlagArrives) {
+            title = R.string.Arrives;
+        }
+        if (mFlagCheckin) {
+            title = R.string.Inhouse;
+        }
+        mBind.whereami.setText(getString(title));
         mBind.lprogress.setVisibility(View.VISIBLE);
         HttpBookings httpBookings = new HttpBookings(mFlagArrives, mFlagDepartures, mFlagCheckin, this);
         httpBookings.go();

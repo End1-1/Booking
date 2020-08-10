@@ -3,7 +3,7 @@ package com.booking.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.booking.App;
+import com.booking.activities.App;
 import com.booking.R;
 
 public class Cnf {

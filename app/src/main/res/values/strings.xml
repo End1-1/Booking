@@ -31,5 +31,22 @@
     <string name="CancelReservation">Չեղարկել</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Departures">Լքող</string>
+    <string name="Arrives">Գալացող</string>
+    <string name="Inhouse">Ապրող</string>
+    <string name="All">Բոլորը</string>
+    <string name="Rooms">Համարներ</string>
+    <string name="Options">Ընտրանքներ</string>
+    <string name="OK">ԱՅՈ</string>
+    <string name="YES">ԱՅՈ</string>
+    <string name="CANCEL">ՈՉ</string>
+    <string name="SaveChanges">Պահպանել՞ փոփոխությունները</string>
+    <string name="Username">Օգտագործող</string>
+    <string name="Password">Գախտնաբար</string>
+    <string name="Empty"></string>
+    <string name="Saved">Պահպանված է</string>
+    <string name="Reservation">Ամրագրում</string>
+    <string name="NewRoom">Նոր համար</string>
+    <string name="Category">Կարգ</string>
 
 </resources>

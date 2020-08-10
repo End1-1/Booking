@@ -2,6 +2,7 @@ package com.booking.gson;
 
 public class GBookingVoucher extends GObject {
     public String id;
+    public String state;
     public String arrival;
     public String departure;
     public String room;

@@ -13,6 +13,9 @@ public class HttpQueries {
     public static final int rcSaveRoom = 6;
     public static final int rcAddReserve = 7;
     public static final int rcReserveState = 8;
+    public static final int rcRoomOptions = 9;
+    public static final int rcSaveRoomOptions = 10;
+    public static final int rcRoomCategoryList = 11;
 
     protected HttpQuery mQuery;
 

@@ -30,6 +30,7 @@ public class LoginFragment extends ParentFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBind = FragmentLoginBinding.inflate(inflater, container, false);
         mBind.login.setOnClickListener(this);
+        mBind.username.setText(Cnf.getString("username"));
         return mBind.getRoot();
     }
 
@@ -75,6 +76,9 @@ public class LoginFragment extends ParentFragment {
                 Cnf.setString("lastname", gu.lastname);
                 Cnf.setString("email", gu.email);
                 Cnf.setString("phone", gu.phone);
+                Cnf.setString("username", mBind.username.getText().toString());
+                Cnf.setString("object", gu.object);
+                Cnf.setString("name", gu.name);
                 ((MainActivity) getActivity()).login();
                 break;
         }
