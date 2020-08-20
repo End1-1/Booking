@@ -48,5 +48,21 @@
     <string name="Reservation">Ամրագրում</string>
     <string name="NewRoom">Նոր համար</string>
     <string name="Category">Կարգ</string>
+    <string name="Account">Անձնական էջ</string>
+    <string name="Settings">Կարգավորումներ</string>
+    <string name="GeneralSettings">Ընդհանուր արգավորումներ</string>
+    <string name="Stays">Հյուրանոց</string>
+    <string name="HolidayPark">Հանգստի գոտի</string>
+    <string name="Restaurant">Ռեստորան</string>
+    <string name="Services">Ծառայություններ</string>
+    <string name="ID">ID</string>
+    <string name="Firstname">Անուն</string>
+    <string name="Lastname">Ազգանուն</string>
+    <string name="Email">Էլ․ հասցե</string>
+    <string name="Phone">Բջջային համար</string>
+    <string name="ChangePassword">Փոխել գախտնաբառը</string>
+    <string name="CurrentPassword">Ընթացիկ գախտնաբառը</string>
+    <string name="NewPassword">Նոր գախտնաբար</string>
+    <string name="RepeatPassword">Կրկնել գախտնաբար</string>
 
 </resources>

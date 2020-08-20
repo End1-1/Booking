@@ -18,6 +18,7 @@ import com.booking.fragments.LoginFragment;
 import com.booking.fragments.ParentFragment;
 import com.booking.fragments.RestaurantFragment;
 import com.booking.fragments.RoomsFragment;
+import com.booking.fragments.SettingsFragment;
 import com.booking.utils.Cnf;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -40,6 +41,7 @@ public class MainActivity extends ParentActivity {
         mBind.departures.setOnClickListener(this);
         mBind.kitchen.setOnClickListener(this);
         mBind.checkin.setOnClickListener(this);
+        mBind.settings.setOnClickListener(this);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String channelId  = getString(R.string.default_notification_channel_id);
@@ -105,6 +107,9 @@ public class MainActivity extends ParentActivity {
                 break;
             case R.id.kitchen:
                 replaceFragment(ParentFragment.newInstance(RestaurantFragment.class));
+                break;
+            case R.id.settings:
+                replaceFragment(ParentFragment.newInstance(SettingsFragment.class));
                 break;
         }
     }

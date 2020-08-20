@@ -29,6 +29,9 @@ public class RoomEditActivity extends ParentActivity {
         mBind.save.setOnClickListener(this);
         mBind.addreserve.setOnClickListener(this);
         mBind.category.setAdapter(new CategoryAdapter(this));
+        if (Integer.valueOf(mId) == 0) {
+            mBind.addreserve.setVisibility(View.GONE);
+        }
     }
 
     @Override
