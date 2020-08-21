@@ -41,4 +41,8 @@ public class ParentFragment extends Fragment implements View.OnClickListener,
     public void webResponse(int code, int webResponse, String s) {
 
     }
+
+    public boolean backPressed() {
+        return true;
+    }
 }

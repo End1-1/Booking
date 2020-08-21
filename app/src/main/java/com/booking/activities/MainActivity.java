@@ -71,8 +71,14 @@ public class MainActivity extends ParentActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    public void onBackPressed() {
+        ParentFragment f = fragment();
+        if (f != null) {
+            if (!f.backPressed()) {
+                return;
+            }
+        }
+        super.onBackPressed();
     }
 
     @Override

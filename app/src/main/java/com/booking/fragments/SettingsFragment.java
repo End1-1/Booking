@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
 import com.booking.R;
+import com.booking.activities.MainActivity;
 import com.booking.databinding.FragmentSettingsBinding;
 import com.booking.utils.AnimateView;
 
@@ -24,34 +25,17 @@ public class SettingsFragment extends ParentFragment {
         bind.stays.setOnClickListener(this);
         bind.holidayPark.setOnClickListener(this);
         bind.restaurant.setOnClickListener(this);
-        bind.back1.setOnClickListener(this);
         return bind.getRoot();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        getView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-                    getView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                } else {
-                    getView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                }
-                AnimateView.animate(bind.pageAccount, null);
-            }
-        });
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.back1:
-                AnimateView.animate(bind.pageAccount, bind.main);
-                break;
             case R.id.account:
-                AnimateView.animate(bind.main, bind.pageAccount);
+                ((MainActivity) getActivity()).replaceFragment(ParentFragment.newInstance(AccountFragment.class));
+                break;
+            case R.id.generalSettings:
+                ((MainActivity) getActivity()).replaceFragment(ParentFragment.newInstance(CommonSettingsFragment.class));
                 break;
         }
     }

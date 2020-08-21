@@ -5,7 +5,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 
 public class AnimateView {
-    public static void animate(View v1, final View v2) {
+    public static void animate(final View v1, final View v2) {
 
         if (v1 != null) {
             TranslateAnimation ta = new TranslateAnimation(0, 0, 0, v1.getHeight());
@@ -19,8 +19,9 @@ public class AnimateView {
 
                 @Override
                 public void onAnimationEnd(android.view.animation.Animation animation) {
-
+                    v1.setVisibility(View.GONE);
                     if (v2 != null) {
+                        v2.setVisibility(View.VISIBLE);
                         TranslateAnimation ta2 = new TranslateAnimation(0, 0, v2.getHeight(), 0);
                         ta2.setDuration(200);
                         ta2.setFillAfter(true);
@@ -62,7 +63,7 @@ public class AnimateView {
 
                 @Override
                 public void onAnimationEnd(android.view.animation.Animation animation) {
-
+                    v2.setVisibility(View.GONE);
                 }
 
                 @Override

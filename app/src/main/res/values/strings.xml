@@ -29,7 +29,7 @@
     <string name="Checkin">Գրանցել /Մուտք/</string>
     <string name="Checkout">Դուրս գրել /Ելք/</string>
     <string name="CancelReservation">Չեղարկել</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Departures">Լքող</string>
     <string name="Arrives">Գալացող</string>
@@ -50,7 +50,7 @@
     <string name="Category">Կարգ</string>
     <string name="Account">Անձնական էջ</string>
     <string name="Settings">Կարգավորումներ</string>
-    <string name="GeneralSettings">Ընդհանուր արգավորումներ</string>
+    <string name="GeneralSettings">Ընդհանուր կարգավորումներ</string>
     <string name="Stays">Հյուրանոց</string>
     <string name="HolidayPark">Հանգստի գոտի</string>
     <string name="Restaurant">Ռեստորան</string>
