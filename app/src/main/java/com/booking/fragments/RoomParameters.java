@@ -6,26 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import com.booking.R;
 import com.booking.activities.MainActivity;
 import com.booking.adapters.HotelPropertyAdapter;
-import com.booking.adapters.RoomOptionAdapter;
-import com.booking.databinding.FragmentRoomClassBinding;
+import com.booking.databinding.FragmentRoomParametersBinding;
 import com.booking.gson.GAnswer;
-import com.booking.gson.GRoomOptions;
 import com.booking.httpqueries.HttpQueries;
-import com.booking.httpqueries.HttpSaveRoomOptions;
 import com.booking.utils.Cnf;
 import com.booking.utils.Dialog;
 import com.booking.utils.HttpQuery;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
-public class RoomClass extends ParentFragment {
+public class RoomParameters extends ParentFragment {
 
-    private FragmentRoomClassBinding bind;
+    private FragmentRoomParametersBinding bind;
     private String mId;
 
     @Override
@@ -39,22 +32,9 @@ public class RoomClass extends ParentFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        bind = FragmentRoomClassBinding.inflate(inflater, container, false);
+        bind = FragmentRoomParametersBinding.inflate(inflater, container, false);
         bind.back.setOnClickListener(this);
-        bind.rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        bind.rv.setAdapter(new HotelPropertyAdapter());
-        ((HotelPropertyAdapter) bind.rv.getAdapter()).mMultiSelection = false;
         return bind.getRoot();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        HttpQueries q = new HttpQueries(Cnf.mHttpHost + "/app/roomclass.php", HttpQuery.mMethodPost, HttpQueries.rcRoomClass);
-        q.mQuery.mWebResponse = this;
-        q.setParameter("room", mId);
-        q.setParameter("group", "12");
-        q.go();
     }
 
     @Override
@@ -73,13 +53,13 @@ public class RoomClass extends ParentFragment {
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == dialogInterface.BUTTON_POSITIVE) {
                     bind.progress.setVisibility(View.VISIBLE);
-                    HttpQuery q = new HttpQuery(Cnf.mHttpHost + "/app/roomclasssave.php", HttpQuery.mMethodPost, HttpQueries.rcSaveRoomClass);
-                    q.mWebResponse = RoomClass.this;
-                    q.setParameter("token", Cnf.getToken());
-                    q.setParameter("room", mId);
-                    q.setParameter("group", "12");
-                    q.setParameter("options", ((HotelPropertyAdapter) bind.rv.getAdapter()).checkedList("12"));
-                    q.request();
+//                    HttpQuery q = new HttpQuery(Cnf.mHttpHost + "/app/roomclasssave.php", HttpQuery.mMethodPost, HttpQueries.rcSaveRoomClass);
+//                    q.mWebResponse = RoomParameters.this;
+//                    q.setParameter("token", Cnf.getToken());
+//                    q.setParameter("room", mId);
+//                    q.setParameter("group", "12");
+//                    q.setParameter("options", ((HotelPropertyAdapter) bind.rv.getAdapter()).checkedList("12"));
+//                    q.request();
                 } else {
                     openRoom();
                 }
@@ -100,18 +80,10 @@ public class RoomClass extends ParentFragment {
             return;
         }
         switch (code) {
-            case HttpQueries.rcRoomClass:
-                GRoomOptions.from(ga.data.get("elements").getAsJsonArray(), GRoomOptions.class, GRoomOptions.mList);
-                ((HotelPropertyAdapter) bind.rv.getAdapter()).mProperties = GRoomOptions.mList;
-                bind.rv.getAdapter().notifyDataSetChanged();
-                break;
-            case HttpQueries.rcSaveRoomClass:
-                openRoom();
-                break;
         }
     }
 
-    void openRoom() {
+    private void openRoom() {
         Bundle b = new Bundle();
         b.putString("room", mId);
         RoomPropertyFragment rpf = new RoomPropertyFragment();

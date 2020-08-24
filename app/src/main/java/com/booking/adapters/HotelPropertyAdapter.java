@@ -64,4 +64,22 @@ public class HotelPropertyAdapter extends RecyclerView.Adapter<RecyclerView.View
     public int getItemCount() {
         return mProperties.size();
     }
+
+    public String checkedList(String group) {
+        String options = "";
+        for (GRoomOptions ro: GRoomOptions.mList) {
+            if (!group.isEmpty()) {
+                if (!group.equals(ro.fparamtype)) {
+                    continue;
+                }
+            }
+            if (ro.fcheck > 0) {
+                if (options.length() > 0) {
+                    options += ",";
+                }
+                options += ro.fid;
+            }
+        }
+        return options;
+    }
 }

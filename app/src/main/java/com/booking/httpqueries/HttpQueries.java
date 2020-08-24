@@ -22,6 +22,7 @@ public class HttpQueries {
     public static final int rcNames = 15;
     public static final int rcSaveName = 16;
     public static final int rcRoomClass = 17;
+    public static final int rcSaveRoomClass = 18;
 
     public HttpQuery mQuery;
 

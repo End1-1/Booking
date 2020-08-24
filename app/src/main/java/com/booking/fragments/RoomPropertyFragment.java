@@ -78,6 +78,10 @@ public class RoomPropertyFragment extends ParentFragment {
                 ((MainActivity) getActivity()).replaceFragment(pfac);
                 break;
             case R.id.editParameters:
+                ba.putString("room", mId);
+                RoomParameters rp = ParentFragment.newInstance(RoomParameters.class);
+                rp.setArguments(ba);
+                ((MainActivity) getActivity()).replaceFragment(rp);
                 break;
         }
     }
