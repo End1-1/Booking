@@ -16,12 +16,22 @@ public class HttpQueries {
     public static final int rcRoomOptions = 9;
     public static final int rcSaveRoomOptions = 10;
     public static final int rcRoomCategoryList = 11;
+    public static final int rcChangePassword = 12;
+    public static final int rcSaveAccount = 13;
+    public static final int rcAccount = 14;
+    public static final int rcNames = 15;
+    public static final int rcSaveName = 16;
+    public static final int rcRoomClass = 17;
 
-    protected HttpQuery mQuery;
+    public HttpQuery mQuery;
 
     public HttpQueries(String url, String method, int resultCode) {
         mQuery = new HttpQuery(url, method, resultCode);
         mQuery.setParameter("token", Cnf.getToken());
+    }
+
+    public void setParameter(String key, String value) {
+        mQuery.setParameter(key, value);
     }
 
     public void go() {

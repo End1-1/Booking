@@ -25,6 +25,7 @@ import com.booking.gson.GRoomCategory;
 import com.booking.httpqueries.HttpQueries;
 import com.booking.httpqueries.HttpRoomCategory;
 import com.booking.httpqueries.HttpRooms;
+import com.booking.utils.Dialog;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -60,6 +61,7 @@ public class RoomsFragment extends ParentFragment {
     @Override
     public void webResponse(int code, int webResponse, String s) {
         if (webResponse > 299) {
+            Dialog.alertDialog(getContext(), R.string.Error, s);
             return;
         }
         GAnswer ga = GAnswer.parse(s, GAnswer.class);

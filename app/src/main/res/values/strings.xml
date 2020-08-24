@@ -31,9 +31,9 @@
     <string name="CancelReservation">Չեղարկել</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="Departures">Լքող</string>
-    <string name="Arrives">Գալացող</string>
-    <string name="Inhouse">Ապրող</string>
+    <string name="Departures">Մեկնողներ</string>
+    <string name="Arrives">Ժամանողներ</string>
+    <string name="Inhouse">Զբաղված է</string>
     <string name="All">Բոլորը</string>
     <string name="Rooms">Համարներ</string>
     <string name="Options">Ընտրանքներ</string>
@@ -64,5 +64,25 @@
     <string name="CurrentPassword">Ընթացիկ գախտնաբառը</string>
     <string name="NewPassword">Նոր գախտնաբար</string>
     <string name="RepeatPassword">Կրկնել գախտնաբար</string>
+    <string name="PropertyType">Օբյեկտի տեսակը</string>
+    <string name="StarRating">Կարգը</string>
+    <string name="Error">Սխալ</string>
+    <string name="PasswordsIsNotEqual">Նոր գախտնաբառը և նրա կրկնությունը նույնը չէն</string>
+    <string name="PasswordCannotBeEmtpy">Գախտնաբառը չի կարող լինի դատարկ</string>
+    <string name="YourPasswordWasChanged">Ձեր գախտնաբառը փոխված է</string>
+    <string name="YourCurrentPasswordIsInvalid">Ընդացիկ գախտնաբառը սխալ է</string>
+    <string name="Exit">Դուրս գալ</string>
+    <string name="Save">Պահպանել</string>
+    <string name="ConfirmToSaveChanges">Պահպանել՞ փոփոխությունները</string>
+    <string name="History">Պատմություն</string>
+    <string name="Hotel">Հյուրանոց</string>
+    <string name="EditName">Խմբագրել անվանումը</string>
+    <string name="Armenian">Հայերեն</string>
+    <string name="English">Անգլերեն</string>
+    <string name="Russian">Ռուսերեն</string>
+    <string name="EditClass">Հմբագրել դասը</string>
+    <string name="Class">Դասը</string>
+    <string name="Parameters">Պարամետրերը</string>
+    <string name="Facilities">Հարմարություններ</string>
 
 </resources>

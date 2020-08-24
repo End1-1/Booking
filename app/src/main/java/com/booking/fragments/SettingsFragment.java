@@ -11,6 +11,7 @@ import com.booking.R;
 import com.booking.activities.MainActivity;
 import com.booking.databinding.FragmentSettingsBinding;
 import com.booking.utils.AnimateView;
+import com.booking.utils.Cnf;
 
 public class SettingsFragment extends ParentFragment {
 
@@ -21,10 +22,11 @@ public class SettingsFragment extends ParentFragment {
                              Bundle savedInstanceState) {
         bind = FragmentSettingsBinding.inflate(inflater, container, false);
         bind.account.setOnClickListener(this);
-        bind.generalSettings.setOnClickListener(this);
         bind.stays.setOnClickListener(this);
         bind.holidayPark.setOnClickListener(this);
         bind.restaurant.setOnClickListener(this);
+        bind.exit.setOnClickListener(this);
+        bind.hotelName.setText(Cnf.getString("name"));
         return bind.getRoot();
     }
 
@@ -34,8 +36,12 @@ public class SettingsFragment extends ParentFragment {
             case R.id.account:
                 ((MainActivity) getActivity()).replaceFragment(ParentFragment.newInstance(AccountFragment.class));
                 break;
-            case R.id.generalSettings:
-                ((MainActivity) getActivity()).replaceFragment(ParentFragment.newInstance(CommonSettingsFragment.class));
+            case R.id.exit:
+                Cnf.setString("user_id", "0");
+                ((MainActivity) getActivity()).replaceFragment(ParentFragment.newInstance(LoginFragment.class));
+                break;
+            case R.id.stays:
+                ((MainActivity) getActivity()).replaceFragment(ParentFragment.newInstance(HotelFragment.class));
                 break;
         }
     }

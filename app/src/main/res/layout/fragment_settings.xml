@@ -16,11 +16,11 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:text="@string/Settings"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/textView11"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/hotelName"
@@ -72,31 +72,6 @@
                 android:src="@drawable/next" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/generalSettings"
-            style="@style/SettingsOption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/account"
-            tools:layout_editor_absoluteX="45dp">
-
-            <TextView
-                style="@style/FontOptionText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:text="@string/GeneralSettings" />
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/next" />
-        </LinearLayout>
-
         <View
             android:id="@+id/divider2"
             android:layout_width="409dp"
@@ -109,7 +84,7 @@
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/generalSettings" />
+            app:layout_constraintTop_toBottomOf="@id/account" />
 
         <TextView
             android:id="@+id/textView10"
@@ -199,7 +174,7 @@
         </LinearLayout>
 
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -207,6 +182,17 @@
             android:layout_marginRight="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/Exit"
+            app:layout_constraintEnd_toStartOf="@id/exit"
+            app:layout_constraintTop_toTopOf="@id/exit" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

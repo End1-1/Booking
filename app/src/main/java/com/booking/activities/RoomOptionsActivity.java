@@ -11,15 +11,13 @@ import com.booking.adapters.RoomOptionAdapter;
 import com.booking.databinding.ActivityRoomOptionsBinding;
 import com.booking.gson.GRoomOptions;
 import com.booking.httpqueries.HttpQueries;
-import com.booking.httpqueries.HttpRoomOptions;
+import com.booking.httpqueries.HttpHotelProperties;
 import com.booking.httpqueries.HttpSaveRoomOptions;
 import com.booking.utils.Cnf;
 import com.booking.utils.Dialog;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
-import static android.content.DialogInterface.BUTTON_NEGATIVE;
-import static android.content.DialogInterface.BUTTON_NEUTRAL;
 import static android.content.DialogInterface.BUTTON_POSITIVE;
 
 public class RoomOptionsActivity extends ParentActivity {
@@ -32,10 +30,10 @@ public class RoomOptionsActivity extends ParentActivity {
         bind = ActivityRoomOptionsBinding.inflate(getLayoutInflater());
         setContentView(bind.getRoot());
         bind.rvCheck.setLayoutManager(new LinearLayoutManager(this));
-        bind.rvCheck.setAdapter(new RoomOptionAdapter(getLayoutInflater()));
+        bind.rvCheck.setAdapter(new RoomOptionAdapter());
         bind.name.setText(Cnf.getString("name"));
         bind.progress.setVisibility(View.VISIBLE);
-        HttpRoomOptions ro = new HttpRoomOptions(Cnf.getString("object"), this);
+        HttpHotelProperties ro = new HttpHotelProperties(Cnf.getString("object"), "", this);
         ro.go();
     }
 
@@ -44,11 +42,12 @@ public class RoomOptionsActivity extends ParentActivity {
         bind.progress.setVisibility(View.GONE);
         JsonParser jp = new JsonParser();
         if (webResponse > 299) {
+            Dialog.alertDialog(this, R.string.Error, s);
             return;
         }
         switch (code) {
             case HttpQueries.rcRoomOptions:
-                JsonArray ja = jp.parse(s).getAsJsonObject().get("data").getAsJsonArray();
+                JsonArray ja = jp.parse(s).getAsJsonObject().get("data").getAsJsonObject().get("elements").getAsJsonArray();
                 GRoomOptions.from(ja, GRoomOptions.class, GRoomOptions.mList);
                 bind.rvCheck.getAdapter().notifyDataSetChanged();
                 break;
@@ -68,7 +67,7 @@ public class RoomOptionsActivity extends ParentActivity {
                     case BUTTON_POSITIVE:
                         dialog.dismiss();
                         bind.progress.setVisibility(View.VISIBLE);
-                        HttpSaveRoomOptions ro = new HttpSaveRoomOptions(RoomOptionsActivity.this);
+                        HttpSaveRoomOptions ro = new HttpSaveRoomOptions(RoomOptionsActivity.this, "");
                         ro.go();
                         break;
                     default:

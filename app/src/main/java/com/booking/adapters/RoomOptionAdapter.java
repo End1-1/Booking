@@ -12,12 +12,6 @@ import com.booking.gson.GRoomOptions;
 
 public class RoomOptionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private LayoutInflater mLayoutInflater;
-
-    public RoomOptionAdapter(LayoutInflater l) {
-        mLayoutInflater = l;
-    }
-
     class VH extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ItemRoomoptionBinding bind;
         public VH(ItemRoomoptionBinding b) {
@@ -44,7 +38,7 @@ public class RoomOptionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        ItemRoomoptionBinding b = ItemRoomoptionBinding.inflate(mLayoutInflater, viewGroup, false);
+        ItemRoomoptionBinding b = ItemRoomoptionBinding.inflate(LayoutInflater.from(viewGroup.getContext()), viewGroup, false);
         return new VH(b);
     }
 

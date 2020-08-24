@@ -8,5 +8,6 @@ public class GRoomOptions extends GObject {
     public String fname;
     public int fcheck;
     public String ftype;
+    public String fparamtype;
     public static List<GRoomOptions> mList = new ArrayList<>();
 }

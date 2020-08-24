@@ -1,100 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activities.MainActivity">
 
     <LinearLayout
-        android:id="@+id/buttons"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/buttons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="5px">
-
-            <ImageButton
-                android:id="@+id/arrives"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="5px"
-                android:background="@null"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/arrives" />
-
-            <ImageButton
-                android:id="@+id/checkin"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="5px"
-                android:background="@null"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/checkout" />
-
-            <ImageButton
-                android:id="@+id/departures"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="5px"
-                android:background="@null"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/departures" />
-
-            <ImageButton
-                android:id="@+id/bookings"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="5px"
-                android:background="@null"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/reservations" />
-
-            <ImageButton
-                android:id="@+id/rooms"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="5px"
-                android:background="@null"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/rooms" />
-
-            <ImageButton
-            android:id="@+id/kitchen"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="5px"
-            android:background="@null"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/kitchen" />
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal"></LinearLayout>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5px">
 
-            <ImageView
-                android:id="@+id/settings"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                app:srcCompat="@drawable/settings" />
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    style="@style/FontBigTitle"
+                    android:text="OBJECT NAME" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/menu"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:srcCompat="@drawable/menu" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorSeparator" />
         </LinearLayout>
 
-        <View
+        <fragment
+            android:id="@+id/fragment"
+            android:name="com.booking.fragments.BlankFragment"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/colorSeparator" />
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.booking.fragments.BlankFragment"
+    <FrameLayout
+        android:id="@+id/flMenu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/layout_border"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:id="@+id/arrives"
+                style="@style/SettingsOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="5px"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/arrives" />
+
+                <TextView
+                    style="@style/SettingsOptionRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Arrives" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/checkin"
+                style="@style/SettingsOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="5px"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/checkout" />
+
+                <TextView
+                    style="@style/SettingsOptionRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Inhouse" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/departures"
+                style="@style/SettingsOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="5px"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/departures" />
+
+                <TextView
+                    style="@style/SettingsOptionRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Departures" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bookings"
+                style="@style/SettingsOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="5px"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/reservations" />
+
+                <TextView
+                    style="@style/SettingsOptionRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Reservation" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rooms"
+                style="@style/SettingsOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="5px"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/rooms" />
+
+                <TextView
+                    style="@style/SettingsOptionRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Rooms" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/kitchen"
+                style="@style/SettingsOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="5px"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/kitchen" />
+
+                <TextView
+                    style="@style/SettingsOptionRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Restaurant" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/history"
+                style="@style/SettingsOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="5px"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/history" />
+
+                <TextView
+                    style="@style/SettingsOptionRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/History" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/settings"
+                style="@style/SettingsOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="5px"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/settings" />
+
+                <TextView
+                    style="@style/SettingsOptionRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Settings" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

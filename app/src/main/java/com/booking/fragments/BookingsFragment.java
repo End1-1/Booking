@@ -17,6 +17,7 @@ import com.booking.databinding.ItemBookingsBinding;
 import com.booking.gson.GAnswer;
 import com.booking.gson.GBookings;
 import com.booking.httpqueries.HttpBookings;
+import com.booking.utils.Dialog;
 import com.google.gson.JsonArray;
 
 import java.util.ArrayList;
@@ -54,6 +55,7 @@ public class BookingsFragment extends ParentFragment {
     public void webResponse(int code, int webResponse, String s) {
         mBind.lprogress.setVisibility(View.GONE);
         if (webResponse > 299) {
+            Dialog.alertDialog(getContext(), R.string.Error, s);
             return;
         }
         GAnswer ga = GAnswer.parse(s, GAnswer.class);

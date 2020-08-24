@@ -71,7 +71,7 @@ public class LoginFragment extends ParentFragment {
         switch (code) {
             case HttpQueries.rcAuth:
                 GUser gu = GUser.parse(ga.data, GUser.class);
-                Cnf.setInt("user_id", gu.id);
+                Cnf.setString("user_id", gu.id);
                 Cnf.setString("firstname", gu.firstname);
                 Cnf.setString("lastname", gu.lastname);
                 Cnf.setString("email", gu.email);

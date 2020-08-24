@@ -31,6 +31,7 @@
                 android:src="@drawable/prev" />
 
             <TextView
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -55,33 +56,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/PropertyType"
-                    style="@style/SettingsOptionRow"/>
-
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv5"
+                    android:id="@+id/rv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
 
                 </androidx.recyclerview.widget.RecyclerView>
 
-                <TextView
-                    android:id="@+id/textView9"
-                    style="@style/SettingsOptionRow"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/StarRating" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv8"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
         </ScrollView>
 

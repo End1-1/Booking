@@ -61,6 +61,7 @@ public class VoucherActivity extends ParentActivity {
     public void webResponse(int code, int webResponse, String s) {
         mBind.progress.setVisibility(View.GONE);
         if (webResponse > 299) {
+            Dialog.alertDialog(this, R.string.Error, s);
             return;
         }
         GAnswer ga = GAnswer.parse(s, GAnswer.class);

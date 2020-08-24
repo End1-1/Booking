@@ -15,6 +15,7 @@ import com.booking.gson.GAnswer;
 import com.booking.httpqueries.HttpAutologin;
 import com.booking.interfaces.HttpResponse;
 import com.booking.utils.Cnf;
+import com.booking.utils.Dialog;
 
 public class AutologinFragment extends ParentFragment {
 
@@ -63,6 +64,7 @@ public class AutologinFragment extends ParentFragment {
     public void webResponse(int code, int webResponse, String s) {
         mBind.progressBar.setVisibility(View.GONE);
         if (webResponse > 299) {
+            Dialog.alertDialog(getContext(), R.string.Error, s);
             mBind.progressBar.setVisibility(View.GONE);
             mBind.retry.setVisibility(View.VISIBLE);
             mBind.login.setVisibility(View.VISIBLE);

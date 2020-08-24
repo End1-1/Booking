@@ -12,6 +12,6 @@ public class HttpAutologin extends HttpQueries {
         super(Cnf.mHttpHost + "/app/autologin.php", HttpQuery.mMethodPost, HttpQueries.rcAutologin);
         mQuery.mWebResponse = r;
         mQuery.setParameter("token", Cnf.getToken());
-        mQuery.setParameter("id", String.format("%d", Cnf.getInt("user_id")));
+        mQuery.setParameter("id", Cnf.getString("user_id"));
     }
 }
