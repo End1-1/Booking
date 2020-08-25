@@ -84,5 +84,7 @@
     <string name="Class">Դասը</string>
     <string name="Parameters">Պարամետրերը</string>
     <string name="Facilities">Հարմարություններ</string>
+    <string name="Area">Մակերեսը</string>
+    <string name="OneRoom">Մեկսենյականոց</string>
 
 </resources>
