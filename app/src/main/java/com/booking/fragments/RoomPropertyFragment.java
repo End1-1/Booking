@@ -73,7 +73,7 @@ public class RoomPropertyFragment extends ParentFragment {
                 ba.putString("title", getString(R.string.Facilities));
                 ba.putBoolean("multi", true);
                 ba.putString("room", mId);
-                PropertyEditorFragment pfac = ParentFragment.newInstance(PropertyEditorFragment.class);
+                RoomFacilitiesFragment pfac = ParentFragment.newInstance(RoomFacilitiesFragment.class);
                 pfac.setArguments(ba);
                 ((MainActivity) getActivity()).replaceFragment(pfac);
                 break;

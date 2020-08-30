@@ -86,5 +86,16 @@
     <string name="Facilities">Հարմարություններ</string>
     <string name="Area">Մակերեսը</string>
     <string name="OneRoom">Մեկսենյականոց</string>
+    <string name="Multiroom">Բազմասենյականոց</string>
+    <string name="Beds">Մահճակալներ</string>
+    <string name="Bedroom1">Ննջարան 1</string>
+    <string name="Bedroom2">Ննջարան 2</string>
+    <string name="ExtraBeds">Հավելյալ տեղեր</string>
+    <string name="UponRequest">Պահանջի դեպքում</string>
+    <string name="Roomwithspecialamenities">Հատուկ հարմարություններով համարներ</string>
+    <string name="NumberOfPlace">Տեղերի քանակը</string>
+    <string name="RoomFacilities">Սենյակի հարմարությունները</string>
+    <string name="MainName">Հիմնական անվանումը</string>
+    <string name="View">Տեսարան</string>
 
 </resources>

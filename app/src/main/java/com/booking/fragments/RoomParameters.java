@@ -38,8 +38,28 @@ public class RoomParameters extends ParentFragment {
                              Bundle savedInstanceState) {
         bind = FragmentRoomParametersBinding.inflate(inflater, container, false);
         bind.back.setOnClickListener(this);
+        bind.oneroomswitch.setOnClickListener(this);
+        bind.multiroomswitch.setOnClickListener(this);
         bind.rvBedOneRoom.setLayoutManager(new LinearLayoutManager(getContext()));
         bind.rvBedOneRoom.setAdapter(new BedAdapter());
+        bind.bedroom1switch.setOnClickListener(this);
+        bind.bedroom2switch.setOnClickListener(this);
+        bind.rvExtraBedOnRoom.setLayoutManager(new LinearLayoutManager(getContext()));
+        bind.rvExtraBedOnRoom.setAdapter(new BedAdapter());
+        bind.rvOneRoomUponRequest.setLayoutManager(new LinearLayoutManager(getContext()));
+        bind.rvOneRoomUponRequest.setAdapter(new BedAdapter());
+        bind.rvMultiSleep1.setLayoutManager(new LinearLayoutManager(getContext()));
+        bind.rvMultiSleep1.setAdapter(new BedAdapter());
+        bind.rvExtraBedM1.setLayoutManager(new LinearLayoutManager(getContext()));
+        bind.rvExtraBedM1.setAdapter(new BedAdapter());
+        bind.rvUponRequestM1.setLayoutManager(new LinearLayoutManager(getContext()));
+        bind.rvUponRequestM1.setAdapter(new BedAdapter());
+        bind.rvMultiSleep2.setLayoutManager(new LinearLayoutManager(getContext()));
+        bind.rvMultiSleep2.setAdapter(new BedAdapter());
+        bind.rvExtraBedM2.setLayoutManager(new LinearLayoutManager(getContext()));
+        bind.rvExtraBedM2.setAdapter(new BedAdapter());
+        bind.rvUponRequestM2.setLayoutManager(new LinearLayoutManager(getContext()));
+        bind.rvUponRequestM2.setAdapter(new BedAdapter());
         return bind.getRoot();
     }
 
@@ -58,6 +78,26 @@ public class RoomParameters extends ParentFragment {
         switch (view.getId()) {
             case R.id.back:
                 backPressed();
+                break;
+            case R.id.oneroomswitch:
+                if (bind.oneroomswitch.isChecked()) {
+                    setOneRoom();
+                } else {
+                    setMultiRoom();
+                }
+                break;
+            case R.id.multiroomswitch:
+                if (bind.multiroomswitch.isChecked()) {
+                    setMultiRoom();
+                } else {
+                    setOneRoom();
+                }
+                break;
+            case R.id.bedroom1switch:
+                bind.lbedroom1.setVisibility(bind.bedroom1switch.isChecked() ? View.VISIBLE : View.GONE);
+                break;
+            case R.id.bedroom2switch:
+                bind.lbedroom2.setVisibility(bind.bedroom2switch.isChecked() ? View.VISIBLE : View.GONE);
                 break;
         }
     }
@@ -78,8 +118,30 @@ public class RoomParameters extends ParentFragment {
                     for (BedAdapter.GBed b: ((BedAdapter) bind.rvBedOneRoom.getAdapter()).mList) {
                         q.setParameter(String.format("bedoneroom[%s]", b.id), b.qty == null ? "0" : b.qty);
                     }
-//                    q.setParameter("group", "12");
-//                    q.setParameter("options", ((HotelPropertyAdapter) bind.rv.getAdapter()).checkedList("12"));
+                    for (BedAdapter.GBed b: ((BedAdapter) bind.rvExtraBedOnRoom.getAdapter()).mList) {
+                        q.setParameter(String.format("extrabedoneroom[%s]", b.id), b.qty == null ? "0" : b.qty);
+                    }
+                    for (BedAdapter.GBed b: ((BedAdapter) bind.rvOneRoomUponRequest.getAdapter()).mList) {
+                        q.setParameter(String.format("uponrequest[%s]", b.id), b.qty == null ? "0" : b.qty);
+                    }
+                    for (BedAdapter.GBed b: ((BedAdapter) bind.rvMultiSleep1.getAdapter()).mList) {
+                        q.setParameter(String.format("bedmultiroom[%s]", b.id), b.qty == null ? "0" : b.qty);
+                    }
+                    for (BedAdapter.GBed b: ((BedAdapter) bind.rvExtraBedM1.getAdapter()).mList) {
+                        q.setParameter(String.format("extram1[%s]", b.id), b.qty == null ? "0" : b.qty);
+                    }
+                    for (BedAdapter.GBed b: ((BedAdapter) bind.rvUponRequestM1.getAdapter()).mList) {
+                        q.setParameter(String.format("uponm1[%s]", b.id), b.qty == null ? "0" : b.qty);
+                    }
+                    for (BedAdapter.GBed b: ((BedAdapter) bind.rvMultiSleep2.getAdapter()).mList) {
+                        q.setParameter(String.format("bedmultiroom2[%s]", b.id), b.qty == null ? "0" : b.qty);
+                    }
+                    for (BedAdapter.GBed b: ((BedAdapter) bind.rvExtraBedM2.getAdapter()).mList) {
+                        q.setParameter(String.format("extram2[%s]", b.id), b.qty == null ? "0" : b.qty);
+                    }
+                    for (BedAdapter.GBed b: ((BedAdapter) bind.rvUponRequestM2.getAdapter()).mList) {
+                        q.setParameter(String.format("uponm2[%s]", b.id), b.qty == null ? "0" : b.qty);
+                    }
                     q.request();
                 } else {
                     openRoom();
@@ -112,6 +174,22 @@ public class RoomParameters extends ParentFragment {
                 }
                 BedAdapter.GBed.from(ga.data.get("bedoneroom").getAsJsonArray(), BedAdapter.GBed.class, ((BedAdapter) bind.rvBedOneRoom.getAdapter()).mList);
                 bind.rvBedOneRoom.getAdapter().notifyDataSetChanged();
+                BedAdapter.GBed.from(ga.data.get("extrabedoneroom").getAsJsonArray(), BedAdapter.GBed.class, ((BedAdapter) bind.rvExtraBedOnRoom.getAdapter()).mList);
+                bind.rvExtraBedOnRoom.getAdapter().notifyDataSetChanged();
+                BedAdapter.GBed.from(ga.data.get("uponrequest").getAsJsonArray(), BedAdapter.GBed.class, ((BedAdapter) bind.rvOneRoomUponRequest.getAdapter()).mList);
+                bind.rvOneRoomUponRequest.getAdapter().notifyDataSetChanged();
+                BedAdapter.GBed.from(ga.data.get("bedmultiroom").getAsJsonArray(), BedAdapter.GBed.class, ((BedAdapter) bind.rvMultiSleep1.getAdapter()).mList);
+                bind.rvMultiSleep1.getAdapter().notifyDataSetChanged();
+                BedAdapter.GBed.from(ga.data.get("extram1").getAsJsonArray(), BedAdapter.GBed.class, ((BedAdapter) bind.rvExtraBedM1.getAdapter()).mList);
+                bind.rvExtraBedM1.getAdapter().notifyDataSetChanged();
+                BedAdapter.GBed.from(ga.data.get("uponm1").getAsJsonArray(), BedAdapter.GBed.class, ((BedAdapter) bind.rvUponRequestM1.getAdapter()).mList);
+                bind.rvUponRequestM1.getAdapter().notifyDataSetChanged();
+                BedAdapter.GBed.from(ga.data.get("bedmultiroom2").getAsJsonArray(), BedAdapter.GBed.class, ((BedAdapter) bind.rvMultiSleep2.getAdapter()).mList);
+                bind.rvMultiSleep2.getAdapter().notifyDataSetChanged();
+                BedAdapter.GBed.from(ga.data.get("extram2").getAsJsonArray(), BedAdapter.GBed.class, ((BedAdapter) bind.rvExtraBedM2.getAdapter()).mList);
+                bind.rvExtraBedM2.getAdapter().notifyDataSetChanged();
+                BedAdapter.GBed.from(ga.data.get("uponm2").getAsJsonArray(), BedAdapter.GBed.class, ((BedAdapter) bind.rvUponRequestM2.getAdapter()).mList);
+                bind.rvUponRequestM2.getAdapter().notifyDataSetChanged();
                 break;
             case HttpQueries.rcSaveRoomParameter:
                 openRoom();
@@ -129,10 +207,19 @@ public class RoomParameters extends ParentFragment {
 
     private void setOneRoom() {
         bind.oneroomswitch.setChecked(true);
+        bind.multiroomswitch.setChecked(false);
+        bind.loneroom.setVisibility(View.VISIBLE);
+        bind.lmultiroom.setVisibility(View.GONE);
     }
 
     private void setMultiRoom() {
         bind.oneroomswitch.setChecked(false);
-        bind.rvBedOneRoom.setVisibility(View.GONE);
+        bind.multiroomswitch.setChecked(true);
+        bind.loneroom.setVisibility(View.GONE);
+        bind.lmultiroom.setVisibility(View.VISIBLE);
+        bind.bedroom1switch.setChecked(false);
+        bind.bedroom2switch.setChecked(false);
+        bind.lbedroom1.setVisibility(bind.bedroom1switch.isChecked() ? View.VISIBLE : View.GONE);
+        bind.lbedroom2.setVisibility(bind.bedroom1switch.isChecked() ? View.VISIBLE : View.GONE);
     }
 }

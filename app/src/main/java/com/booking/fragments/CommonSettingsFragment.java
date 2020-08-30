@@ -61,7 +61,7 @@ public class CommonSettingsFragment extends ParentFragment {
                             rvNext = "8";
                             roomOptions.go();
                         } else {
-                            ((MainActivity) getActivity()).replaceFragment(ParentFragment.newInstance(SettingsFragment.class));
+                            ((MainActivity) getActivity()).replaceFragment(ParentFragment.newInstance(HotelFragment.class));
                         }
                     }
                 });
@@ -104,7 +104,7 @@ public class CommonSettingsFragment extends ParentFragment {
                     break;
                 }
                 if (rvNext.equals("999")) {
-                    ((MainActivity) getActivity()).replaceFragment(ParentFragment.newInstance(SettingsFragment.class));
+                    ((MainActivity) getActivity()).replaceFragment(ParentFragment.newInstance(HotelFragment.class));
                 }
                 break;
         }

@@ -68,6 +68,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/newroom"
+        android:visibility="gone"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_gravity="end|bottom"
